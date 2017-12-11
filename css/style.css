@@ -3,21 +3,25 @@ header, section, footer, aside, nav, main, article, figure {
 }
 body {
     background-color: powderblue;
+    margin: 0;
+    padding: 0;
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: #333;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     width: 100%;
+    /*clear: both;*/
 }
 
 li {
-    float: left;
+    /*float: left;*/
+    display: inline-block;
     border-right: 1px solid #bbb;
 }
 
@@ -46,18 +50,31 @@ li a:hover {
 .container {
   padding:20px;
   margin-top:30px;
+  text-align: center;
   /*background-color:#1abc9c;*/
   height:auto;
 }
 
 .form-field {
   background-color: #4CAF50;
+  width: 50%;
+  margin: auto;
 }
+
+/*form input {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}*/
 
 form input {
   width: 50%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 8px auto;
   /*display: inline-block;*/
   border: 1px solid #ccc;
   border-radius: 4px;
