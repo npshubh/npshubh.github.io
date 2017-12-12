@@ -1,0 +1,128 @@
+html, body {
+    background-color: powderblue;
+    margin: 0px;
+    padding: 0px;
+}
+
+/** {
+    box-sizing: border-box;
+}*/
+.header {
+    /*border: 1px solid red;*/
+    padding: 15px;
+}
+.container {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+.row {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+.row::after {
+    content: "";
+    clear: both;
+}
+[class*="col-"] {
+    float: left;
+    padding: 0px;
+    border: 0.1px solid ;
+}
+
+.heading {
+  margin-top: 40px;
+}
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;margin: 0px;
+    padding: 0px;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;margin: 0px;
+    padding: 0px;}
+    .col-7 {width: 58.33%;margin: 0px;
+    padding: 0px;}
+    .col-8 {width: 66.66%;margin: 0px;
+    padding: 0px;}
+    .col-9 {width: 75%;margin: 0px;
+    padding: 0px;}
+    .col-10 {width: 83.33%;margin: 0px;
+    padding: 0px;}
+    .col-11 {width: 91.66%;margin: 0px;
+    padding: 0px;}
+    .col-12 {width: 100%;margin: 0px;
+    padding: 0px;}
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+}
+
+.menu li {
+    display: inline-block;
+    border-right: 1px solid #bbb;
+}
+
+.menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 10px;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    background-color: #111;
+}
+
+.menu li:last-child {
+  float: right;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.dropdown-content {
+  display: none;
+  /*position: absolute;*/
+  background-color: #333;
+  /*width: auto;*/
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  position: absolute;
+  width: inherit;
+  z-index: 1;
+}
+
+form input {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px auto;
+  /*display: inline-block;*/
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 480px) {
+    ul.menu {  height: auto; }
+    ul.menu > li {  float: none; width: 100%; }
+    ul.menu a { line-height: 40px; }
+    ul.menu ul { position: relative; }
+}
