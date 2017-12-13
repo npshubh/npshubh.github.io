@@ -1,18 +1,52 @@
+
+//variables
 @color-orange: #ff9900;
 @color-gray_light: #cccccc;
 @color-black_dark: #333333;
 @color-black_medium: #454545;
 @color-poder-blue: powderblue;
+@color-active-link: #4CAF50;
+@color-white: white;
+@images: "../images";
+
+
+//mixins
+.margin-padding {
+  margin: 0;
+  padding: 0;
+}
+
+//parametric mixins
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+
+//mixin guards
+.bg-color-check (@a) when (lightness(@a) >= 50%) {
+  background-color: black;
+}
+.bg-color-check (@a) when (lightness(@a) < 50%) {
+  background-color: white;
+}
+.bg-color-check (@a) {
+  color: @a;
+}
 
 body {
-    background: @color-black_dark;
-    color: @color-poder-blue;
+  .margin-padding;//use of mixin
+  background-image: url("@{images}/back.jpg");
+  color: @color-black_dark;
+    // background: @color-poder-blue;
 }
 a {
-    color:@color-orange;
+  .bg-color-check(#ffc53a);
+  // color:@color-orange;//use of variable
 }
 h1, h2, h3, h4, h5, h6 {
-    color: @color-black_dark;
+    color: @color-white;
 }
 
 header,
@@ -25,120 +59,96 @@ article,
 figure {
   display: block;
 }
-body {
-  // background-color: powderblue;
-  margin: 0;
-  padding: 0;
-}
+
 ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  /*overflow: hidden;*/
-  background-color: #333;
+  .margin-padding;
+  background-color: @color-black_dark;
   position: fixed;
   top: 0;
   width: 100%;
-  /*clear: both;*/
+  z-index:10;
 }
+
+//Nested Rules
 li {
-  /*float: left;*/
   display: inline-block;
   border-right: 1px solid #bbb;
+
+  a {
+    display: block;
+    // color: @color-white;
+    text-align: center;
+    padding: 12px 10px;
+    text-decoration: none;
+  }
+
+  &:last-child {
+    border-right: none;
+    float: right;
+  }
 }
-li:last-child {
-  border-right: none;
-  float: right;
-}
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 12px 10px;
-  text-decoration: none;
-}
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
-}
+
 .active {
-  background-color: #4CAF50;
+  background-color: @color-active-link;
 }
 .container {
   padding: 20px;
   margin-top: 30px;
   text-align: center;
-  column-span: all;
-  /*background-color:#1abc9c;*/
-  height: auto;
 }
 .form-field {
-  background-color: #4CAF50;
+  background-color: @color-active-link;
   width: 50%;
   margin: auto;
 }
-/*form input {
-  width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}*/
 form input {
   width: 50%;
   padding: 12px 20px;
   margin: 8px auto;
-  /*display: inline-block;*/
   border: 1px solid #ccc;
-  border-radius: 4px;
+  .border-radius(4px); //use of parametric mixin
   box-sizing: border-box;
-}
-input[type=submit] {
-  width: 50%;
-  background-color: #333;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  & + [type=submit] {
+    background-color: @color-black_dark;
+    color: @color-white;
+    cursor: pointer;
+  }
 }
 /* Dropdown */
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #333;
+  background-color: @color-black_dark;
   width: auto;
 }
 .dropdown:hover .dropdown-content {
   display: block;
 }
-/*.flex-container {
-  display: flex;
-  justify-content: space-around;
-}*/
-.column-example {
-  column-count: 3;
-  column-gap: 30px;
-  column-rule: solid 1px;
-  /*align-content: stretch;
-  align-items:flex-start;*/
-  justify-content: center;
-  align-items: center;
-}
 p {
   padding: 10px;
   margin: 0px;
 }
-@media screen and (max-width: 500px) and (min-width: 300PX) {
-  .column-example {
-    column-count: 2;
+
+//Nested Directives and Bubbling
+
+.column-example {
+  @media screen {
+    background-color: @color-white;
+    opacity: 0.7;
+    font-weight: bold;
+    color: green;
+    column-count: 3;
     column-gap: 30px;
-    column-rule: solid 1px;
-    /*align-content: stretch;
-    align-items:flex-start;*/
-    justify-content: center;
-    align-items: center;
+    z-index:5;
+    column-rule: @color-black_dark solid 1px;
+    @media (max-width: 768px) and (min-width: 500px) {
+      color: red;
+      column-count: 2;
+    }
+    @media (max-width: 499px) {
+      color: blue;
+      column-count: 1;
+    }
   }
 }

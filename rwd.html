@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
-    <link rel="stylesheet" href="css/rwd.css">
+    <link rel="stylesheet/less" type="text/css" href="css/rwd.less" />
+    <script src="scripts/less.js" type="text/javascript"></script>
   </head>
   <body>
-    <ul class="col-12 menu">
+    <ul>
       <li><a href="index.html" title="Home">Home</a></li>
       <li><a href="login.html" title="Login">Login</a></li>
       <li><a href="registration.html" title="Signup">Signup</a></li>
@@ -19,8 +20,9 @@
         </div>
       </li>
     </ul>
-      <h1 class="heading" style="text-align:center" >Login</h1>
-      <div class="col-12">
+    <div class="container">
+      <div class="row"><h1 class="heading" style="text-align:center" >Login</h1></div>
+      <div class="row">
         <div class="col-3"></div>
         <div class="col-6" style="text-align:center">
           <form id="login-form" style="background-color:green;">
@@ -31,5 +33,6 @@
         </div>
         <div class="col-3"></div>
       </div>
+    </div>
   </body>
 </html>
